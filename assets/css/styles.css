@@ -127,13 +127,23 @@ body {
   padding: 16px 24px 130px;
 }
 
-/* Top iOS 27 Status Bar & Dynamic Island */
+/* Top iOS 27 Status Bar & Dynamic Island (Sticky Header) */
 .ios-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 18px;
+  padding: 12px 20px;
   margin-bottom: 24px;
+  background: rgba(10, 14, 24, 0.72);
+  backdrop-filter: var(--ios-blur);
+  -webkit-backdrop-filter: var(--ios-blur);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
 }
 
 .clock-widget {
@@ -1161,6 +1171,19 @@ body.theme-light .dock-item.active svg {
 }
 body.theme-light .dock-separator {
   background: rgba(0, 0, 0, 0.12);
+}
+body.theme-light .ios-topbar {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(100, 116, 139, 0.15);
+}
+body.theme-light .clock-widget {
+  color: #0f172a;
+}
+body.theme-light .location-chip {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.3);
 }
 body.theme-light .settings-btn,
 body.theme-light .about-btn {
