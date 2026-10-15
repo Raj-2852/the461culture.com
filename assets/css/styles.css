@@ -1078,6 +1078,26 @@ body {
   .places-grid {
     grid-template-columns: 1fr;
   }
+  .place-media {
+    height: 280px;
+  }
+  .place-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .creator-reels-strip {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .reel-card {
+    aspect-ratio: 9/15;
+  }
+  .reel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .dashboard-grid {
     grid-template-columns: 1fr;
     gap: 16px;
