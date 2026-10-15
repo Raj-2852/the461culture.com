@@ -1154,6 +1154,55 @@ body.theme-light .dock-separator {
 body.theme-light .info-box strong {
   color: #0f172a;
 }
+body.theme-light .ios-modal-backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+body.theme-light .ios-modal-dialog {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 35px rgba(0, 122, 255, 0.1);
+  color: #0f172a;
+}
+body.theme-light .settings-row {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+body.theme-light .settings-row:hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+body.theme-light .settings-label-text strong {
+  color: #0f172a;
+}
+body.theme-light .settings-label-text span {
+  color: rgba(15, 23, 42, 0.6);
+}
+body.theme-light .modal-close-btn {
+  background: rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+body.theme-light .modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.16);
+}
+body.theme-light .modal-body h3 {
+  color: #0f172a;
+}
+body.theme-light .modal-text {
+  color: rgba(15, 23, 42, 0.75);
+}
+body.theme-light .ios-toggle-slider {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+body.theme-light .btn-secondary {
+  background: rgba(0, 0, 0, 0.06);
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+body.theme-light .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
 
 /* Reduced Motion Mode */
 body.reduced-motion .ambient-glow,
