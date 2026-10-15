@@ -975,6 +975,134 @@ body {
   .places-grid {
     grid-template-columns: 1fr;
   }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ios-viewport {
+    padding: 10px 12px 115px;
+  }
+  .topbar {
+    margin-bottom: 18px;
+  }
+  .creator-hero {
+    padding: 20px 16px;
+    gap: 20px;
+    border-radius: 24px;
+  }
+  .creator-brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .creator-details h1 {
+    font-size: 26px;
+  }
+  .creator-tagline {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .creator-stats-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .creator-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .creator-actions .btn-glass {
+    width: 100%;
+    justify-content: center;
+  }
+  .channel-dashboard {
+    margin-bottom: 28px;
+  }
+  .channel-dashboard .section-head {
+    margin: 24px 0 16px;
+  }
+  .channel-dashboard .section-head h2 {
+    font-size: 20px;
+  }
+  .channel-dashboard .section-head p {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .dash-card {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+  .dash-header {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .dash-icon-box {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+  .dash-title-wrap h3 {
+    font-size: 15.5px;
+  }
+  .dash-title-wrap span {
+    font-size: 11px;
+  }
+  .dash-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .dash-pill-list {
+    gap: 6px;
+  }
+  .dash-pill {
+    font-size: 10.5px;
+    padding: 4px 9px;
+  }
+  .ios-floating-dock {
+    bottom: 14px;
+    padding: 6px 10px;
+    gap: 6px;
+    max-width: calc(100vw - 20px);
+  }
+  .dock-item {
+    width: 48px;
+    height: 48px;
+    font-size: 9.5px;
+  }
+  .dock-item svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .creator-details h1 {
+    font-size: 23px;
+  }
+  .dash-card {
+    padding: 15px 13px;
+  }
+  .dash-title-wrap h3 {
+    font-size: 14.5px;
+  }
+  .ios-floating-dock {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+  .dock-item {
+    width: 44px;
+    height: 44px;
+    font-size: 9px;
+  }
 }
 
 /* Light Mode Overrides */
