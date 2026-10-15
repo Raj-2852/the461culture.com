@@ -1,8 +1,5 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "the461culture",
   "compatibility_date": "2026-03-01",
-  "assets": {
-    "directory": "."
-  }
+  "pages_build_output_dir": "."
 }
