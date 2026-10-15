@@ -261,6 +261,15 @@ function setupDynamicIsland() {
 
 // Dock button filter action
 window.filterByDock = function(category) {
+  // Update active state on dock items
+  const dockButtons = document.querySelectorAll(".ios-floating-dock .dock-item");
+  dockButtons.forEach(btn => {
+    btn.classList.remove("active");
+    if (btn.getAttribute("onclick") && btn.getAttribute("onclick").includes(`'${category}'`)) {
+      btn.classList.add("active");
+    }
+  });
+
   const tabs = document.querySelectorAll(".filter-tab");
   tabs.forEach(t => {
     if (t.dataset.category === category) {
