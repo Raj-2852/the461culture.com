@@ -32,6 +32,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overscroll-behavior-y: none;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
@@ -40,6 +45,7 @@ body {
   overflow-x: hidden;
   position: relative;
   line-height: 1.5;
+  overscroll-behavior-y: none;
 }
 
 /* Ambient glow orbs in the background */
