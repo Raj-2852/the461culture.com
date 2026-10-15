@@ -359,8 +359,8 @@ body {
 
 .profile-photo-card {
   position: relative;
-  width: 170px;
-  height: 200px;
+  width: 175px;
+  height: 215px;
   border-radius: 20px;
   overflow: hidden;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
@@ -386,32 +386,38 @@ body {
 }
 
 .creator-profile-showcase:hover .profile-photo-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .profile-name-box {
-  background: rgba(18, 24, 38, 0.85);
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(14, 18, 28, 0.82);
   backdrop-filter: var(--ios-blur);
   -webkit-backdrop-filter: var(--ios-blur);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 6px 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 6px 10px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
   transition: all 0.25s ease;
+  z-index: 2;
 }
 
 .profile-name-box span {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   color: #fff;
   display: block;
 }
 
 .creator-profile-showcase:hover .profile-name-box {
-  background: rgba(0, 240, 255, 0.15);
-  border-color: rgba(0, 240, 255, 0.5);
-  box-shadow: 0 8px 25px rgba(0, 240, 255, 0.25);
+  background: rgba(0, 240, 255, 0.22);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 240, 255, 0.35);
 }
 
 .creator-avatar-wrap {
@@ -1050,9 +1056,21 @@ body {
     padding: 12px 14px 110px;
   }
   .creator-hero {
-    padding: 24px 20px;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 24px 22px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .creator-brand {
+    flex: 1 1 360px;
+  }
+  .creator-profile-showcase {
+    align-self: center;
+  }
+  .profile-photo-card {
+    width: 155px;
+    height: 195px;
   }
   .dynamic-island {
     display: none;
