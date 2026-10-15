@@ -472,6 +472,19 @@ body {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+.btn-about {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.22), rgba(157, 78, 221, 0.18));
+  color: #fff;
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+}
+.btn-about:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.4), rgba(157, 78, 221, 0.3));
+  border-color: rgba(0, 240, 255, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 240, 255, 0.35);
+}
+
 /* Category Navigation Filter Pills */
 .filter-shelf {
   display: flex;
