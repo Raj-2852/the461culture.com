@@ -1289,50 +1289,71 @@ body.theme-light .ios-modal-backdrop {
   background: rgba(15, 23, 42, 0.45);
 }
 body.theme-light .ios-modal-dialog {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 35px rgba(0, 122, 255, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22), 0 0 35px rgba(2, 132, 199, 0.15);
   color: #0f172a;
 }
+body.theme-light .settings-group-title {
+  color: #0284c7;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+body.theme-light #settings-modal h3 {
+  color: #0f172a;
+  font-weight: 800;
+}
+body.theme-light #settings-modal span {
+  color: #334155;
+}
 body.theme-light .settings-row {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: #f8fafc;
+  border-color: #cbd5e1;
 }
 body.theme-light .settings-row:hover {
-  background: rgba(0, 0, 0, 0.07);
+  background: #f1f5f9;
+  border-color: #94a3b8;
 }
 body.theme-light .settings-label-text strong {
   color: #0f172a;
+  font-weight: 700;
 }
 body.theme-light .settings-label-text span {
-  color: rgba(15, 23, 42, 0.6);
+  color: #334155 !important;
+  font-weight: 500;
 }
 body.theme-light .modal-close-btn {
-  background: rgba(0, 0, 0, 0.08);
+  background: #f1f5f9;
   color: #0f172a;
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: #cbd5e1;
+  font-weight: 700;
 }
 body.theme-light .modal-close-btn:hover {
-  background: rgba(0, 0, 0, 0.16);
+  background: #e2e8f0;
+  color: #000;
 }
 body.theme-light .modal-body h3 {
   color: #0f172a;
+  font-weight: 800;
 }
 body.theme-light .modal-text {
-  color: rgba(15, 23, 42, 0.75);
+  color: #1e293b;
+  font-weight: 450;
 }
 body.theme-light .ios-toggle-slider {
-  background-color: rgba(0, 0, 0, 0.15);
-  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #cbd5e1;
+  border-color: #94a3b8;
 }
 body.theme-light .btn-secondary {
-  background: rgba(0, 0, 0, 0.06);
+  background: #f1f5f9;
   color: #0f172a;
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: #cbd5e1;
+  font-weight: 600;
 }
 body.theme-light .btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.12);
+  background: #e2e8f0;
 }
+
 
 
 /* Reduced Motion Mode */
