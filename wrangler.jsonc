@@ -1,5 +1,7 @@
 {
   "name": "the461culture",
   "compatibility_date": "2026-03-01",
-  "pages_build_output_dir": "."
+  "assets": {
+    "directory": "."
+  }
 }
