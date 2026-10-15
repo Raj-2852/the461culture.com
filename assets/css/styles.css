@@ -1340,4 +1340,19 @@ body.ultra-glass .ios-glass-card {
   color: var(--text-primary);
 }
 
+/* Site Bottom Copyright */
+.site-copyright {
+  text-align: center;
+  padding: 30px 15px 15px;
+  margin-top: 20px;
+}
+
+.site-copyright p {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}
+
+
 
