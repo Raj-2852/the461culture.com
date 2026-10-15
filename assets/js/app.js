@@ -290,6 +290,23 @@ window.closeSettingsModal = function() {
   }
 };
 
+// About Me Modal Controls
+window.openAboutModal = function() {
+  const modal = document.getElementById("about-modal");
+  if (modal) {
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+};
+
+window.closeAboutModal = function() {
+  const modal = document.getElementById("about-modal");
+  if (modal) {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+};
+
 // Toggle Settings Features
 window.toggleThemeMode = function(isLight) {
   if (isLight) {

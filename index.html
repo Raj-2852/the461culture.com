@@ -70,16 +70,22 @@
                 </div>
             </div>
 
-            <!-- Top Right: iOS 27 Settings Button -->
-            <button class="settings-btn" id="btn-settings" onclick="openSettingsModal()" aria-label="Open Settings">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path
-                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                    </path>
-                </svg>
-                <span>Settings</span>
-            </button>
+            <!-- Top Right: About Me & Settings Controls -->
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button class="about-btn" id="btn-about" onclick="openAboutModal()" aria-label="Open About Me">
+                    <img src="./assets/images/Ramesh.jpg" alt="Ramesh Killo" style="width: 18px; height: 18px; border-radius: 50%; object-fit: cover;" />
+                    <span>About Me</span>
+                </button>
+                <button class="settings-btn" id="btn-settings" onclick="openSettingsModal()" aria-label="Open Settings">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                    <span>Settings</span>
+                </button>
+            </div>
         </header>
 
         <!-- Creator Hero Glass Card -->
@@ -537,6 +543,83 @@
                             🔗 Copy Share Link
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Me Blurred Transparent Window -->
+    <div class="ios-modal-backdrop" id="about-modal" onclick="if(event.target === this) closeAboutModal()">
+        <div class="ios-modal-dialog" style="max-width: 640px;">
+            <div style="padding: 22px 24px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <img src="./assets/images/Ramesh.jpg" alt="Ramesh Killo" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-cyan); box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);" />
+                    <div>
+                        <h3 style="font-size: 19px; font-weight: 700; margin: 0;">About Me</h3>
+                        <span style="font-size: 12px; color: var(--accent-cyan); font-weight: 600;">Ramesh Killo • Storyteller & Creator</span>
+                    </div>
+                </div>
+                <button class="modal-close-btn" style="position:static;" onclick="closeAboutModal()" aria-label="Close about modal">✕</button>
+            </div>
+
+            <div class="modal-body" style="padding: 24px 28px; max-height: 72vh; overflow-y: auto;">
+                <!-- Round profile picture banner -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px;">
+                    <div style="position: relative; width: 110px; height: 110px; margin-bottom: 14px;">
+                        <div class="avatar-halo"></div>
+                        <img src="./assets/images/Ramesh.jpg" alt="Ramesh Killo" style="position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 255, 255, 0.4); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);" />
+                    </div>
+                    <h4 style="font-size: 22px; font-weight: 800; margin: 0 0 4px; background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.75) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        Ramesh Killo
+                    </h4>
+                    <span style="font-size: 13px; color: var(--accent-cyan); font-weight: 600;">
+                        Alluri Sitharama Raju District, Andhra Pradesh, India
+                    </span>
+                </div>
+
+                <div style="font-size: 14px; line-height: 1.75; color: var(--text-secondary); display: flex; flex-direction: column; gap: 14px;">
+                    <p>
+                        I'm Ramesh Killo, a content creator from Alluri Sitarama Raju District, Andhra Pradesh, India. With a background in Computer Science and Engineering and a passion for storytelling, I aim to explore the world beyond the ordinary and bring meaningful, informative, and thought-provoking content to a global audience.
+                    </p>
+                    <p>
+                        My educational journey began at APTWR School, Allamputtu, followed by my intermediate education at APTWR College, Pedabayalu. I later graduated with a Bachelor of Technology (B.Tech) in Computer Science and Engineering from BITS College, Bakkannapalem, Visakhapatnam.
+                    </p>
+                    <p>
+                        In December 2023, I began my journey into social media content creation. What started as a creative pursuit has grown into a passion for discovering fascinating facts, exploring untold stories, understanding the world around us, and presenting information in an engaging and accessible way.
+                    </p>
+                    <p>
+                        Through my content, I strive to uncover lesser-known stories, explore diverse perspectives, explain intriguing concepts, and share valuable insights about science, nature, human behaviour, culture, and the world we live in.
+                    </p>
+                    <p>
+                        Coming from the beautiful landscapes of Alluri Sitarama Raju District, I carry a deep appreciation for nature, local culture, and the stories that often remain unexplored. My vision is to connect local experiences with global knowledge, making information accessible, meaningful, and interesting to people from different backgrounds.
+                    </p>
+
+                    <div style="margin: 10px 0 4px; padding: 16px 20px; background: rgba(0, 240, 255, 0.06); border-radius: 18px; border: 1px solid rgba(0, 240, 255, 0.2);">
+                        <h5 style="font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 8px; display: flex; align-items: center; gap: 8px;">
+                            <span>✨</span> My Vision
+                        </h5>
+                        <p style="margin: 0; font-size: 13.5px; color: var(--text-primary);">
+                            My goal is to build a platform that goes beyond ordinary content—a place where curiosity leads to discovery, knowledge inspires understanding, and stories from every corner of the world find their way to a wider audience.
+                        </p>
+                    </div>
+
+                    <p>
+                        I believe that there is always something new to learn, something fascinating to discover, and a story worth telling.
+                    </p>
+
+                    <p style="font-weight: 600; color: var(--accent-cyan); text-align: center; margin-top: 6px; font-size: 15px;">
+                        Welcome to my world of exploration, knowledge, and discovery.
+                    </p>
+                </div>
+
+                <div style="margin-top: 24px; display: flex; gap: 12px;">
+                    <a href="https://youtube.com/@delights000?si=4WdEm3oga3oi8Vp5" target="_blank" rel="noopener" class="btn-glass btn-youtube" style="flex: 1; justify-content: center; gap: 8px;">
+                        <img src="./assets/images/FavIcon.jpg" alt="Logo" style="width: 18px; height: 18px; border-radius: 50%; object-fit: cover;" />
+                        Subscribe on YouTube
+                    </a>
+                    <button onclick="closeAboutModal()" class="btn-glass btn-secondary">
+                        Close
+                    </button>
                 </div>
             </div>
         </div>
