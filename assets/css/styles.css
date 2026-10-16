@@ -57,6 +57,9 @@ html {
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
