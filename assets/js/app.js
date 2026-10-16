@@ -147,7 +147,7 @@ function renderPlaces(list) {
   container.innerHTML = list.map(item => `
     <article class="ios-glass-card place-card" onclick="openPlaceModal('${item.id}')">
       <div class="place-media">
-        <img class="place-img" src="${item.image}" alt="${item.title}" loading="lazy" />
+        <img class="place-img" src="${item.image}" alt="${item.title}" loading="lazy" width="360" height="260" onerror="this.onerror=null;this.src='./assets/images/araku_valley.jpg';" />
         <div class="place-pill-loc">
           <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -185,7 +185,7 @@ function renderReels(reels) {
 
   container.innerHTML = reels.map(r => `
     <a href="${r.link}" target="_blank" rel="noopener" class="reel-card">
-      <img src="${r.image}" alt="${r.title}" />
+      <img src="${r.image}" alt="${r.title}" loading="lazy" width="200" height="333" onerror="this.onerror=null;this.src='./assets/images/araku_valley.jpg';" />
       <div class="reel-badge">
         <span style="display:inline-block; width:6px; height:6px; background:#ff2a85; border-radius:50%;"></span>
         ${r.tag}
@@ -206,6 +206,16 @@ function setupFilterTabs() {
       tabs.forEach(t => t.classList.remove("active"));
       tab.classList.add("active");
       const category = tab.dataset.category;
+      
+      // Keep dock buttons in sync with category selection
+      const dockButtons = document.querySelectorAll(".ios-floating-dock .dock-item");
+      dockButtons.forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.getAttribute("onclick") && btn.getAttribute("onclick").includes(`'${category}'`)) {
+          btn.classList.add("active");
+        }
+      });
+
       if (category === "all") {
         renderPlaces(placesData);
       } else {
@@ -222,19 +232,42 @@ window.openPlaceModal = function(id) {
   if (!item) return;
 
   const modal = document.getElementById("place-modal");
-  document.getElementById("modal-img").src = item.image;
-  document.getElementById("modal-title").innerText = item.title;
-  document.getElementById("modal-location").innerText = item.district;
-  document.getElementById("modal-desc").innerText = item.details;
-  document.getElementById("modal-altitude").innerText = item.altitude;
-  document.getElementById("modal-best-time").innerText = item.bestTime;
-  document.getElementById("modal-reach").innerText = item.reach;
+  const modalImg = document.getElementById("modal-img");
+  if (modalImg) {
+    modalImg.src = item.image;
+    modalImg.alt = item.title;
+    modalImg.onerror = function() {
+      this.src = "./assets/images/araku_valley.jpg";
+    };
+  }
+  
+  const titleEl = document.getElementById("modal-title");
+  if (titleEl) titleEl.innerText = item.title;
+  
+  const locEl = document.getElementById("modal-location");
+  if (locEl) locEl.innerText = item.district;
+  
+  const descEl = document.getElementById("modal-desc");
+  if (descEl) descEl.innerText = item.details;
+  
+  const altEl = document.getElementById("modal-altitude");
+  if (altEl) altEl.innerText = item.altitude;
+  
+  const bestEl = document.getElementById("modal-best-time");
+  if (bestEl) bestEl.innerText = item.bestTime;
+  
+  const reachEl = document.getElementById("modal-reach");
+  if (reachEl) reachEl.innerText = item.reach;
 
   const tagsContainer = document.getElementById("modal-tags");
-  tagsContainer.innerHTML = item.tags.map(t => `<span class="tag-item">#${t}</span>`).join('');
+  if (tagsContainer) {
+    tagsContainer.innerHTML = item.tags.map(t => `<span class="tag-item">#${t}</span>`).join('');
+  }
 
-  modal.classList.add("open");
-  document.body.style.overflow = "hidden";
+  if (modal) {
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
 };
 
 // Close Modal
@@ -242,9 +275,26 @@ window.closePlaceModal = function() {
   const modal = document.getElementById("place-modal");
   if (modal) {
     modal.classList.remove("open");
-    document.body.style.overflow = "";
+    checkModalsClosed();
   }
 };
+
+// Helper to restore body scrolling when all modals are closed
+function checkModalsClosed() {
+  const openModals = document.querySelectorAll(".ios-modal-backdrop.open");
+  if (openModals.length === 0) {
+    document.body.style.overflow = "";
+  }
+}
+
+// Close any open modal on Escape key press
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closePlaceModal();
+    closeSettingsModal();
+    closeAboutModal();
+  }
+});
 
 // Dynamic Island interactions
 function setupDynamicIsland() {
@@ -256,7 +306,7 @@ function setupDynamicIsland() {
     if (reelsSection) {
       reelsSection.scrollIntoView({ behavior: 'smooth' });
     }
-  });
+  }, { passive: true });
 }
 
 // Dock button filter action
@@ -295,7 +345,7 @@ window.closeSettingsModal = function() {
   const modal = document.getElementById("settings-modal");
   if (modal) {
     modal.classList.remove("open");
-    document.body.style.overflow = "";
+    checkModalsClosed();
   }
 };
 
@@ -312,7 +362,25 @@ window.closeAboutModal = function() {
   const modal = document.getElementById("about-modal");
   if (modal) {
     modal.classList.remove("open");
-    document.body.style.overflow = "";
+    checkModalsClosed();
+  }
+};
+
+// Safe storage helper with fallback for restricted/incognito contexts
+const safeStorage = {
+  setItem: function(key, val) {
+    try {
+      localStorage.setItem(key, val);
+    } catch (e) {
+      // Storage unavailable or disabled
+    }
+  },
+  getItem: function(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
   }
 };
 
@@ -320,61 +388,121 @@ window.closeAboutModal = function() {
 window.toggleThemeMode = function(isLight) {
   if (isLight) {
     document.body.classList.add("theme-light");
-    localStorage.setItem("th461_theme", "light");
+    safeStorage.setItem("th461_theme", "light");
   } else {
     document.body.classList.remove("theme-light");
-    localStorage.setItem("th461_theme", "dark");
+    safeStorage.setItem("th461_theme", "dark");
   }
 };
 
 window.toggleUltraGlass = function(isUltra) {
   if (isUltra) {
     document.body.classList.add("ultra-glass");
+    safeStorage.setItem("th461_ultraglass", "true");
   } else {
     document.body.classList.remove("ultra-glass");
+    safeStorage.setItem("th461_ultraglass", "false");
   }
 };
 
 window.toggleReduceMotion = function(reduce) {
   if (reduce) {
     document.body.classList.add("reduced-motion");
+    safeStorage.setItem("th461_motion", "true");
   } else {
     document.body.classList.remove("reduced-motion");
+    safeStorage.setItem("th461_motion", "false");
   }
 };
 
 window.toggleLargeFont = function(isLarge) {
   if (isLarge) {
     document.body.classList.add("font-large");
+    safeStorage.setItem("th461_largefont", "true");
   } else {
     document.body.classList.remove("font-large");
+    safeStorage.setItem("th461_largefont", "false");
   }
 };
 
-// Share Channel feature
+// Share Channel feature with resilient fallback
 window.shareChannel = function() {
   const url = "https://youtube.com/@delights000?si=4WdEm3oga3oi8Vp5";
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(url).then(() => {
-      const btn = document.getElementById("btn-share");
-      if (btn) {
-        const originalText = btn.innerText;
-        btn.innerText = "✓ YouTube Link Copied!";
-        setTimeout(() => {
-          btn.innerText = originalText;
-        }, 2200);
-      }
+  const btn = document.getElementById("btn-share");
+  
+  const showSuccessFeedback = () => {
+    if (btn) {
+      const originalText = btn.innerText;
+      btn.innerText = "✓ YouTube Link Copied!";
+      setTimeout(() => {
+        btn.innerText = originalText;
+      }, 2200);
+    }
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(showSuccessFeedback).catch(() => {
+      fallbackCopy(url);
     });
+  } else {
+    fallbackCopy(url);
+  }
+
+  function fallbackCopy(text) {
+    try {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand("copy");
+      document.body.removeChild(textArea);
+      if (successful) {
+        showSuccessFeedback();
+      } else {
+        window.open(text, "_blank", "noopener");
+      }
+    } catch (err) {
+      window.open(text, "_blank", "noopener");
+    }
   }
 };
 
 // Restore saved settings on load
 (function restorePreferences() {
-  const savedTheme = localStorage.getItem("th461_theme");
+  // Theme
+  const savedTheme = safeStorage.getItem("th461_theme");
   if (savedTheme === "light") {
     document.body.classList.add("theme-light");
-    const toggle = document.getElementById("toggle-theme");
-    if (toggle) toggle.checked = true;
+    const toggleTheme = document.getElementById("toggle-theme");
+    if (toggleTheme) toggleTheme.checked = true;
+  }
+  
+  // Ultra Glass
+  const savedUltra = safeStorage.getItem("th461_ultraglass");
+  if (savedUltra === "true") {
+    document.body.classList.add("ultra-glass");
+    const toggleUltra = document.getElementById("toggle-ultraglass");
+    if (toggleUltra) toggleUltra.checked = true;
+  }
+
+  // Reduced Motion
+  const savedMotion = safeStorage.getItem("th461_motion");
+  if (savedMotion === "true") {
+    document.body.classList.add("reduced-motion");
+    const toggleMotion = document.getElementById("toggle-motion");
+    if (toggleMotion) toggleMotion.checked = true;
+  }
+
+  // Large Font
+  const savedFont = safeStorage.getItem("th461_largefont");
+  if (savedFont === "true") {
+    document.body.classList.add("font-large");
+    const toggleFont = document.getElementById("toggle-font");
+    if (toggleFont) toggleFont.checked = true;
   }
 })();
 
