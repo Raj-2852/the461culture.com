@@ -151,7 +151,7 @@ body {
 /* Dynamic Island Pro 27 */
 .dynamic-island {
   position: relative;
-  background: #131825;
+  background: var(--island-bg);
   border-radius: 40px;
   border: 1px solid #222b40;
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
@@ -404,6 +404,10 @@ body {
   background: rgba(13, 20, 32, 0.96);
   border-color: rgba(0, 240, 255, 0.7);
   box-shadow: 0 4px 18px rgba(0, 240, 255, 0.35);
+}
+
+.creator-profile-showcase:hover .profile-name-box span {
+  color: #ffffff !important;
 }
 
 .creator-avatar-wrap {
@@ -1329,15 +1333,29 @@ body.theme-light {
   --island-bg: rgba(255, 255, 255, 0.88);
 }
 body.theme-light .dynamic-island {
+  background: #ffffff;
   border-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(100, 116, 139, 0.18);
+}
+body.theme-light .dynamic-island:hover {
+  background: #f8fafc;
+  border-color: rgba(2, 132, 199, 0.4);
 }
 body.theme-light .island-title {
   color: #0f172a;
 }
+body.theme-light .island-sub {
+  color: #475569;
+}
 body.theme-light .island-btn {
-  background: rgba(0, 0, 0, 0.08);
-  color: #0f172a;
+  background: #0284c7;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+body.theme-light .island-btn:hover {
+  background: #0369a1;
+  color: #ffffff !important;
 }
 body.theme-light .creator-details h1 {
   background: linear-gradient(180deg, #0f172a 30%, #334155 100%);
