@@ -35,6 +35,10 @@
 html {
   overscroll-behavior-y: none;
   touch-action: pan-x pan-y pinch-zoom;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -52,10 +56,14 @@ body {
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(80px);
+  -webkit-filter: blur(80px);
   z-index: 0;
   pointer-events: none;
   opacity: 0.45;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
   animation: floatOrb 18s ease-in-out infinite alternate;
 }
 .orb-1 {
@@ -100,6 +108,8 @@ body {
   box-shadow: var(--glass-glow);
   border: 1px solid var(--glass-border);
   overflow: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1074,6 +1084,10 @@ body {
 
 /* Responsive queries */
 @media (max-width: 860px) {
+  :root {
+    --ios-blur: blur(14px);
+    --ios-blur-heavy: blur(20px);
+  }
   .ios-viewport {
     padding: 12px 14px 110px;
   }
@@ -1640,6 +1654,9 @@ body.ultra-glass .ios-glass-card {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  contain: layout style;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 .dash-card:hover {
