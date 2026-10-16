@@ -519,13 +519,14 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  background: #007aff;
-  color: white;
-  border-radius: 50%;
-  font-size: 13px;
-  box-shadow: 0 0 10px rgba(0, 122, 255, 0.6);
+  vertical-align: middle;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0, 149, 246, 0.45));
+}
+
+.verified-badge svg {
+  display: block;
 }
 
 .creator-tagline {
