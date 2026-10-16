@@ -1,13 +1,13 @@
 :root {
   --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --bg-gradient: radial-gradient(circle at 15% 15%, #18223c 0%, #080b12 45%, #05070a 100%);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-hover: rgba(255, 255, 255, 0.09);
-  --glass-active: rgba(255, 255, 255, 0.14);
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-border-specular: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.18) 100%);
-  --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  --glass-subtle-glow: 0 4px 20px 0 rgba(0, 0, 0, 0.35);
+  --bg-gradient: #090c14;
+  --glass-bg: #121724;
+  --glass-bg-hover: #171d2e;
+  --glass-active: #1d253a;
+  --glass-border: #1e2638;
+  --glass-border-specular: none;
+  --glass-glow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --glass-subtle-glow: 0 2px 8px rgba(0, 0, 0, 0.3);
   --accent-cyan: #00f0ff;
   --accent-purple: #9d4edd;
   --accent-gold: #ffbe0b;
@@ -16,12 +16,12 @@
   --text-primary: #f5f5f7;
   --text-secondary: rgba(245, 245, 247, 0.65);
   --text-tertiary: rgba(245, 245, 247, 0.42);
-  --ios-blur: blur(28px);
-  --ios-blur-heavy: blur(45px);
+  --ios-blur: none;
+  --ios-blur-heavy: none;
   --radius-dock: 32px;
   --radius-card: 26px;
   --radius-pill: 9999px;
-  --island-bg: rgba(10, 10, 12, 0.78);
+  --island-bg: #111520;
 }
 
 * {
@@ -57,9 +57,8 @@ html {
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-repeat: no-repeat;
-  background-size: cover;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
@@ -68,79 +67,31 @@ body {
   overscroll-behavior-y: none;
 }
 
-/* Ambient glow orbs in the background */
+/* Ambient glow orbs disabled for plain dark lightweight graphics */
 .ambient-glow {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  -webkit-filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.45;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
-  animation: floatOrb 18s ease-in-out infinite alternate;
-}
-.orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #5e17eb 0%, transparent 70%);
-  top: -100px;
-  left: 10%;
-}
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #00d2ff 0%, transparent 70%);
-  bottom: 5%;
-  right: -100px;
-  animation-duration: 22s;
-  animation-delay: -5s;
-}
-.orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #ff2a85 0%, transparent 70%);
-  top: 45%;
-  left: 40%;
-  animation-duration: 26s;
-  animation-delay: -9s;
+  display: none !important;
 }
 
-@keyframes floatOrb {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, -60px) scale(1.1); }
-  100% { transform: translate(-30px, 40px) scale(0.95); }
-}
-
-/* iOS Specular Glass Border Utility */
+/* Clean Solid Plain Dark Cards (Except Dashboard which retains glass styling) */
 .ios-glass-card {
   position: relative;
-  background: var(--glass-bg);
-  backdrop-filter: var(--ios-blur);
-  -webkit-backdrop-filter: var(--ios-blur);
+  background: #111624;
   border-radius: var(--radius-card);
-  box-shadow: var(--glass-glow);
-  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  border: 1px solid #1c2436;
   overflow: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ios-glass-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.22) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  display: none !important;
+}
+
+.ios-glass-card:hover {
+  transform: translateY(-4px);
+  background: #161c2d;
+  border-color: #2b364e;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.1);
 }
 
 .ios-glass-card:hover {
@@ -169,12 +120,10 @@ body {
   justify-content: space-between;
   padding: 12px 20px;
   margin-bottom: 24px;
-  background: rgba(10, 14, 24, 0.72);
-  backdrop-filter: var(--ios-blur);
-  -webkit-backdrop-filter: var(--ios-blur);
+  background: #0d111a;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid #1a2234;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -192,7 +141,7 @@ body {
   font-size: 11px;
   font-weight: 500;
   padding: 3px 9px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #171f30;
   border-radius: var(--radius-pill);
   color: var(--accent-cyan);
   border: 1px solid rgba(0, 240, 255, 0.25);
@@ -202,12 +151,10 @@ body {
 /* Dynamic Island Pro 27 */
 .dynamic-island {
   position: relative;
-  background: var(--island-bg);
-  backdrop-filter: var(--ios-blur-heavy);
-  -webkit-backdrop-filter: var(--ios-blur-heavy);
+  background: #131825;
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.9);
+  border: 1px solid #222b40;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
   padding: 8px 18px;
   display: flex;
   align-items: center;
@@ -643,27 +590,27 @@ body {
 .filter-tab {
   padding: 10px 20px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #121724;
+  border: 1px solid #1f273a;
   color: var(--text-secondary);
   font-size: 13.5px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  backdrop-filter: var(--ios-blur);
   transition: all 0.25s ease;
 }
 
 .filter-tab:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
+  background: #182032;
+  border-color: #2b374e;
 }
 
 .filter-tab.active {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.22), rgba(157, 78, 221, 0.22));
-  color: #fff;
+  background: #162438;
+  color: var(--accent-cyan);
   border-color: rgba(0, 240, 255, 0.45);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.15);
   font-weight: 600;
 }
 
@@ -734,10 +681,8 @@ body {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(10, 10, 14, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0d111a;
+  border: 1px solid #1f283c;
   border-radius: var(--radius-pill);
   padding: 5px 12px;
   font-size: 11.5px;
@@ -752,10 +697,8 @@ body {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(10, 10, 14, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0d111a;
+  border: 1px solid #1f283c;
   border-radius: var(--radius-pill);
   padding: 5px 10px;
   font-size: 12px;
@@ -915,16 +858,14 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
-  background: rgba(18, 22, 34, 0.65);
-  backdrop-filter: var(--ios-blur-heavy);
-  -webkit-backdrop-filter: var(--ios-blur-heavy);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #0d121c;
+  border: 1px solid #1c2638;
   border-radius: var(--radius-dock);
   padding: 8px 14px;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .dock-item {
@@ -980,9 +921,7 @@ body {
 .ios-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -1001,12 +940,10 @@ body {
 .ios-modal-dialog {
   max-width: 680px;
   width: 100%;
-  background: rgba(20, 24, 38, 0.88);
-  backdrop-filter: blur(35px);
-  -webkit-backdrop-filter: blur(35px);
+  background: #111522;
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 240, 255, 0.15);
+  border: 1px solid #232c40;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8);
   overflow: hidden;
   transform: translateY(20px) scale(0.96);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1035,9 +972,8 @@ body {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0d111a;
+  border: 1px solid #2a344a;
   color: #fff;
   font-size: 16px;
   display: flex;
@@ -1686,6 +1622,11 @@ body.ultra-glass .ios-glass-card {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45) !important;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   contain: layout style;
@@ -1693,7 +1634,9 @@ body.ultra-glass .ios-glass-card {
 }
 .dash-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.15);
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.15) !important;
 }
 .dash-header {
   display: flex;
@@ -1757,27 +1700,25 @@ body.ultra-glass .ios-glass-card {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: var(--ios-blur);
-  -webkit-backdrop-filter: var(--ios-blur);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #101522;
+  border: 1px solid #1e2638;
   border-radius: 12px;
   padding: 10px 18px;
   font-size: 12.5px;
   font-weight: 500;
   color: var(--text-secondary);
   letter-spacing: 0.2px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   transition: all 0.25s ease;
   margin: 0;
 }
 
 .site-copyright p:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #161c2e;
   border-color: rgba(0, 240, 255, 0.35);
   color: var(--text-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 240, 255, 0.15);
 }
 
 @media (max-width: 640px) {
