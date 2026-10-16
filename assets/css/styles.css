@@ -1105,6 +1105,9 @@ body {
     --ios-blur: blur(14px);
     --ios-blur-heavy: blur(20px);
   }
+  .ambient-glow {
+    display: none !important;
+  }
   .ios-viewport {
     padding: 12px 14px 110px;
   }
