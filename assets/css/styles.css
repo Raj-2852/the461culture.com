@@ -1108,6 +1108,9 @@ body {
   .ambient-glow {
     display: none !important;
   }
+  .ios-glass-card::before {
+    display: none !important;
+  }
   .ios-viewport {
     padding: 12px 14px 110px;
   }
