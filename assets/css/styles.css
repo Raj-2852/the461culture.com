@@ -321,6 +321,14 @@ body {
   min-width: 0;
 }
 
+.creator-actions-wrap {
+  display: block;
+}
+
+.mobile-showcase {
+  display: none !important;
+}
+
 /* Main Box Right Side Profile Showcase */
 .creator-profile-showcase {
   display: flex;
@@ -342,9 +350,9 @@ body {
   height: 215px;
   border-radius: 20px;
   overflow: hidden;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 240, 255, 0.18);
+  background: #101524;
+  border: 1px solid #1f2a3e;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,8 +360,9 @@ body {
 }
 
 .creator-profile-showcase:hover .profile-photo-card {
-  border-color: rgba(0, 240, 255, 0.55);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 240, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(0, 240, 255, 0.25);
+  transform: translateY(-2px);
 }
 
 .profile-photo-img {
@@ -373,30 +382,28 @@ body {
   bottom: 10px;
   left: 10px;
   right: 10px;
-  background: rgba(14, 18, 28, 0.82);
-  backdrop-filter: var(--ios-blur);
-  -webkit-backdrop-filter: var(--ios-blur);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(10, 14, 22, 0.92);
+  border: 1px solid rgba(0, 240, 255, 0.3);
   border-radius: 10px;
-  padding: 6px 10px;
+  padding: 7px 10px;
   text-align: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
   transition: all 0.25s ease;
   z-index: 2;
 }
 
 .profile-name-box span {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   color: #fff;
   display: block;
 }
 
 .creator-profile-showcase:hover .profile-name-box {
-  background: rgba(0, 240, 255, 0.22);
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: 0 6px 18px rgba(0, 240, 255, 0.35);
+  background: rgba(13, 20, 32, 0.96);
+  border-color: rgba(0, 240, 255, 0.7);
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.35);
 }
 
 .creator-avatar-wrap {
@@ -1117,13 +1124,16 @@ body {
   }
   .creator-hero {
     padding: 20px 16px;
-    gap: 20px;
+    gap: 16px;
     border-radius: 24px;
+    display: flex;
+    flex-direction: column;
   }
   .creator-brand {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    width: 100%;
   }
   .creator-details h1 {
     font-size: 26px;
@@ -1136,22 +1146,58 @@ body {
     flex-wrap: wrap;
     gap: 8px;
   }
-  .creator-actions {
+  .creator-actions-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 14px;
     width: 100%;
+    margin-top: 14px;
+  }
+  .creator-actions {
+    flex: 1 1 auto;
+    width: auto;
     flex-direction: column;
     gap: 10px;
+    margin-top: 0;
   }
   .creator-actions .btn-glass {
     width: 100%;
     justify-content: center;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .desktop-showcase {
+    display: none !important;
+  }
+  .mobile-showcase {
+    display: flex !important;
   }
   .creator-profile-showcase {
-    width: 100%;
-    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin-top: 0;
+    flex-shrink: 0;
   }
   .profile-photo-card {
-    width: 150px;
-    height: 180px;
+    width: 135px;
+    height: 100%;
+    min-height: 160px;
+    border-radius: 16px;
+  }
+  .profile-name-box {
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    padding: 4px 6px;
+  }
+  .profile-name-box span {
+    font-size: 9.5px;
+    letter-spacing: 0.8px;
   }
   .channel-dashboard {
     margin-bottom: 28px;
@@ -1222,6 +1268,21 @@ body {
 @media (max-width: 380px) {
   .creator-details h1 {
     font-size: 23px;
+  }
+  .creator-actions-wrap {
+    gap: 8px;
+  }
+  .creator-actions .btn-glass {
+    padding: 8px 10px;
+    font-size: 11.5px;
+    gap: 6px;
+  }
+  .profile-photo-card {
+    width: 115px;
+    min-height: 145px;
+  }
+  .profile-name-box span {
+    font-size: 8.5px;
   }
   .dash-card {
     padding: 15px 13px;
