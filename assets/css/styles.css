@@ -655,32 +655,43 @@ body {
   display: block;
 }
 
-/* Places Grid */
+/* Places Grid - Photo Album View */
 .places-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .place-card {
-  display: flex;
-  flex-direction: column;
+  display: block;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  padding: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.5);
 }
 
 .place-media {
   position: relative;
   width: 100%;
-  height: 240px;
+  aspect-ratio: 4 / 3;
+  height: auto;
   overflow: hidden;
-  border-radius: calc(var(--radius-card) - 6px) calc(var(--radius-card) - 6px) 0 0;
+  border-radius: var(--radius-card);
 }
 
 .place-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1091,10 +1102,12 @@ body {
     display: none;
   }
   .places-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
   }
   .place-media {
-    height: 280px;
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
   .place-img {
     width: 100%;

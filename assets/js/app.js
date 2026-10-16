@@ -148,31 +148,6 @@ function renderPlaces(list) {
     <article class="ios-glass-card place-card" onclick="openPlaceModal('${item.id}')">
       <div class="place-media">
         <img class="place-img" src="${item.image}" alt="${item.title}" loading="lazy" width="360" height="260" onerror="this.onerror=null;this.src='./assets/images/araku_valley.jpg';" />
-        <div class="place-pill-loc">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            <circle cx="12" cy="9" r="2.5"/>
-          </svg>
-          ${item.district.split(',')[0]}
-        </div>
-        <div class="place-rating">★ ${item.rating}</div>
-      </div>
-      <div class="place-content">
-        <span class="place-meta-district">📍 ${item.district}</span>
-        <h3 class="place-title">${item.title}</h3>
-        <p class="place-desc">${item.excerpt}</p>
-        <div class="place-tags">
-          ${item.tags.map(t => `<span class="tag-item">#${t}</span>`).join('')}
-        </div>
-        <div class="place-footer">
-          <span style="font-size: 11px; color: var(--text-tertiary);">Best: ${item.bestTime}</span>
-          <span class="footer-link">
-            Explore Guide
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </span>
-        </div>
       </div>
     </article>
   `).join("");
