@@ -126,7 +126,7 @@ body {
   overflow: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .ios-glass-card::before {
@@ -175,7 +175,7 @@ body {
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .clock-widget {
@@ -1116,6 +1116,9 @@ body {
   }
   .ios-glass-card::before {
     display: none !important;
+  }
+  body {
+    background-attachment: scroll !important;
   }
   .ios-viewport {
     padding: 12px 14px 110px;
